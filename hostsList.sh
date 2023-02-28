@@ -7,7 +7,7 @@ function host_list(){
 
         hosts=$(for host in $(seq 1 254);
                 do
-                        (timeout 1 ping -c 1 "${ip_base}.$host")&>/dev/null && echo "${ip_base}.$host" &
+                    (timeout 1 ping -c 1 "${ip_base}.$host")&>/dev/null && echo "${ip_base}.$host" &
                 done; wait 
         )
     
