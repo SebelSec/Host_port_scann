@@ -281,7 +281,7 @@ function escaneo_base(){
         tput sgr0
         
         clear
-        echo -e "---------------------último escaneo------------------\n $myports \n" | tee ./portLog.txt
+        echo -e "$myports" | tee ./portLog.txt
         read -rs -p"Presiona una tecla para volver atras";echo 
         
     fi
@@ -304,14 +304,9 @@ function escaneo_extenso(){
                 exist="1"
             fi 
         done | tee ./portLog.txt
-
-        if [ "$exist" -ne "1" ];
-        then
-            echo -e "\n ${redColour}No hay puertos abiertos${endColour} \n"
-        else
-            echo -e "\n ${redColour}No hay mas puertos abiertos${endColour} \n"
-        fi
-        
+       
+        echo -e "\n ${redColour}No hay mas puertos abiertos${endColour} \n"
+    
         read -rs -p"Presiona una tecla para continuar";echo 
         tput cnorm
         clear
