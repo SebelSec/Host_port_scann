@@ -67,12 +67,11 @@ function selectIface(){  #Función que selecciona la interfaz
         clear
     elif [ ${#selectedIface} -gt 0 ]; then
         clear
-        Seleccionada la interfaz, asignamos las variables de red
+        #Seleccionada la interfaz, asignamos las variables de red
         echo -e "${grayColour}\n ------------------------------------------------- \n${endColour}"
         echo -e "${greenColour}\n ¡Adaptador ${selectedIface} seleccionado!\n${endColour}"
         echo -e "${grayColour}\n ------------------------------------------------- \n${endColour}"
 
-        echo "$selectedIface"
         ip=$(ifconfig $selectedIface | head -n 2 | tail -n 1 | awk '{print $2}')
         netmask=$(ifconfig $selectedIface | head -n 2 | tail -n 1 | awk '{print $4}')
         netPrefix=$(ip a | grep $selectedIface | tail -n 1 | awk '{print $2}' | cut -d "/" -f2)
@@ -108,7 +107,6 @@ function ifaceInfo(){  #Muestra información de la interfaz
     if [ "$selectedIface" != "No seleccionado" ];
     then
    
-    
         echo -e "${turquoiseColour}\n -------------- Información de adaptador ${yellowColour}[ $selectedIface ]${endColour} ${turquoiseColourColour}---------------\n\n${endColour}"
         echo -e "\t ${greenColour}IP:${grayColour} $ip \n ${endColour}"
         echo -e "\t ${greenColour}Máscara de subred:${grayColour} $netmask /$netPrefix\n${endColour}"
@@ -123,7 +121,7 @@ function ifaceInfo(){  #Muestra información de la interfaz
 }
 
 
-function host_list(){
+function host_list(){ #Escaneo en búsqueda de dispositivos dentro de la red
     clear
 
     if [ "$selectedIface" != "No seleccionado" ];
