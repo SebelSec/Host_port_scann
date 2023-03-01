@@ -1,5 +1,5 @@
 #!/bin/bash
-
+(
 
 base_ifaces=$(ifconfig | grep "flags" | grep -v "LOOPBACK" | cut -d ":" -f1)
 menuOpt=""
@@ -63,7 +63,8 @@ function selectIface(){  #Función que selecciona la interfaz
 
     if [ $number -eq 0 ]; then
         selectedIface="No seleccionado"
-        read -rs -p"Presiona una tecla para continuar";echo
+        echo "Presione una tecla para continuar"
+        read -rs -p" Presione";echo
         clear
     elif [ ${#selectedIface} -gt 0 ]; then
         clear
@@ -91,12 +92,14 @@ function selectIface(){  #Función que selecciona la interfaz
 
         baseIp=$( echo "$ip" | cut -d "." -f1-${netsOct})
         let hostsOct="4 - $netsOct"
-        read -rs -p"Presiona una tecla para continuar";echo
+        echo "Presione una tecla para continuar"
+        read -rs -p" Presione";echo
         clear
     else
         echo "[!] No existe la interfaz"
         selectedIface="No seleccionado"
-        read -rs -p"Presiona una tecla para continuar";echo
+        echo "Presione una tecla para continuar"
+        read -rs -p" Presione";echo
         clear
         selectIface
     fi
@@ -113,7 +116,8 @@ function ifaceInfo(){  #Muestra información de la interfaz
         echo -e "\t ${greenColour}Cantidad posible de host:${grayColour} $hosts \n${endColour}"
 
         echo -e "${turquoiseColour}\n -----------------------------------------------------------------------------\n${endColour}"
-        read -rs -p"Presiona una tecla para continuar";echo
+        echo "Presione una tecla para continuar"
+        read -rs -p" Presione";echo
         clear
     else
         clear
@@ -156,18 +160,18 @@ function host_list(){ #Escaneo en búsqueda de dispositivos dentro de la red
                 hostInNetInfo=$(echo -e $allHosts | sed 's/ /\n/g' | while read -r line; 
                 do
                     counter+=1
-                    (timeout 1 ping -c 1 "$line" &>/dev/null) && echo -e "\n \t ${greenColour}[$counter]${endColour} ---> ${grayColour} $line ${endColour}" &    
+                    (timeout 2 ping -c 1 "$line" &>/dev/null) && echo -e "\n \t ${greenColour}[$counter]${endColour} ---> ${grayColour} $line ${endColour}" &    
                 done; wait)
 
                 hostInNetToScann=$( echo -e "$hostInNetInfo" | awk '{print $4}' )
 
                 echo -e "$hostInNetInfo \n"
-                echo -e "\n \t ${blueColour}[A]${endColour} ---> ${grayColour}Escanear todos\n${endColour}"
+                echo -e "\n \t ${blueColour}[A]${endColour} ---> ${grayColour}Escanear todos los equipos (Puede demorar)\n${endColour}"
                 echo -e "\n \t ${redColour}[0]${endColour} ---> Atras \n"
                 echo -e "\n"
                 echo -e "${yellowColour}=====================================================${endColour}"
 
-                echo -e "Seleccionar un equipo u opción A (Escanear Todos)"
+                echo -e "Seleccionar un equipo, opción A (Escanear Todos) o 0 para salir"
                 read selectToScann
 
                 echo "$hostInNetInfo" | grep -F "[$selectToScann]"
@@ -201,7 +205,6 @@ function host_list(){ #Escaneo en búsqueda de dispositivos dentro de la red
                     clear
                 fi
             
-        read -rs -p"Presiona una tecla para continuar";echo
         clear
 
         else
@@ -236,7 +239,7 @@ function select_scann(){
             if [ $selectToScann == "A" ];then
                 clear
                 echo "No se puede realizar un escaneo extenso de todos los equipos"
-                read -rs -p"Presiona una tecla para continuar";echo 
+                read -s -p"Presiona una tecla para continuar";echo 
             else
                 escaneo_extenso 
             fi
@@ -260,7 +263,7 @@ function escaneo_base(){
 
         clear
     else
-	    echo "${yellowColour}======== Escaneo básico TCP ==========${endColour}"
+	   echo "${yellowColour}======== Escaneo básico TCP ==========${endColour}"
 		hostWithPorts="0"
         clear
         tput bold; echo -e "${redColour} [!] ${endColour} Escaneando puertos, espere porfavor ..."
@@ -278,7 +281,8 @@ function escaneo_base(){
         
         clear
         echo -e "$myports" | tee ./portLog.txt
-        read -rs -p"Presiona una tecla para volver atras";echo 
+        echo "Presiona una tecla para continuar"
+        read -rs -p "pres ";echo 
         
     fi
 }
@@ -300,7 +304,8 @@ function escaneo_extenso(){
        
         echo -e "\n ${redColour}No hay mas puertos abiertos${endColour} \n"
     
-        read -rs -p"Presiona una tecla para continuar";echo 
+        echo "Presiona una tecla para continuar"
+        read -rs -p "pres ";echo 
         tput cnorm
         clear
     fi
@@ -337,7 +342,7 @@ function menuifaces(){
             clear
             cat ./portLog.txt
             echo -e "${turquoiseColour}\n (ctrl + mayus + up) Para subir en el archivo \n ${endColour}"
-            read -rs -p"Presiona una tecla para continuar";echo 
+            read -s -p"Presiona una tecla para continuar";echo 
             clear
             ifacesopt
             read menuOpt
@@ -373,3 +378,5 @@ function menuifaces(){
 while [ true ]; do
     menuifaces
 done
+
+)2>/dev/null

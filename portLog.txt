@@ -1,7 +1,238 @@
-[0;33m[1m 
-
------------- Resultados host [ 192.168.3.107 ] ------------
-
+[0;33m[1m
+--------- Resultados host [ 192.168.3.21 ]--------
 [0m[0m
-	 [0;32m[1mPort 49412 TCP --> open 
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.1 ]--------
+[0m[0m
+[0;32m[1m
+ 	 Port 80 TCP --> open[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.55 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.107 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.104 ]--------
+[0m[0m
+[0;32m[1m
+ 	 Port 22 TCP --> open[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.108 ]--------
+[0m[0m
+[0;32m[1m
+ 	 Port 22 TCP --> open[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.121 ]--------
+[0m[0m
+[0;32m[1m
+ 	 Port 22 TCP --> open[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.116 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.131 ]--------
+[0m[0m
+[0;32m[1m
+ 	 Port 22 TCP --> open[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.120 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.134 ]--------
+[0m[0m
+[0;32m[1m
+ 	 Port 80 TCP --> open[0m[0m
+[0;32m[1m
+ 	 Port 443 TCP --> open[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.150 ]--------
+[0m[0m
+[0;32m[1m
+ 	 Port 21 TCP --> open[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.170 ]--------
+[0m[0m
+[0;32m[1m
+ 	 Port 22 TCP --> open[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.153 ]--------
+[0m[0m
+[0;32m[1m
+ 	 Port 22 TCP --> open[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.166 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.171 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.177 ]--------
+[0m[0m
+[0;32m[1m
+ 	 Port 22 TCP --> open[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.199 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.181 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.240 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.198 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.172 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.216 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.146 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.157 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.161 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.202 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.193 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.190 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.109 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.191 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.143 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.214 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.210 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.188 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
+[0m[0m
+[0;33m[1m
+--------- Resultados host [ 192.168.3.204 ]--------
+[0m[0m
+[0;31m[1m
+ 	 No hay mas puertos abiertos 
 [0m[0m
