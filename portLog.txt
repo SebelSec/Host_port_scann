@@ -1,10 +1,7 @@
----------------------último escaneo------------------
- [0;33m[1m
---------- Resultados host [ 10.0.2.4 ]--------
-[0m[0m
-[0;32m[1m
- 	 Port 22 TCP --> open[0m[0m
-[0;31m[1m
- 	 No hay mas puertos abiertos 
-[0m[0m 
+[0;33m[1m 
 
+------------ Resultados host [ 192.168.3.107 ] ------------
+
+[0m[0m
+	 [0;32m[1mPort 49412 TCP --> open 
+[0m[0m
