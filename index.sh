@@ -29,12 +29,13 @@ grayColour="\e[0;37m\033[1m"
                 ⢸⡇⠀⠀⠀⣿⠀⠀⠀⠀⠀⠘⢧⣄⠁⠈⣁⣴⠏⠀⠀⠀⠀⠀⣿⠀⠀⠀⠘⣧
                 ⠈⠳⣦⣀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠻⠶⠶⠟⠀⠀⠀⠀⠀⠀⠀⣿⠀⢀⣤⠞⠃
                 ⠀⠀⠀⠙⠷⣿⣀⣀⣀⣀⣀⣠⣤⣤⣤⣤⣀⣤⣠⣤⡀⠀⣤⣄⣿⡶⠋⠁⠀⠀
-                ⠀⠀⠀⠀⠀⢿⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿⠀⠀⠀⠀
-            ============  Port scan  =============⠀
+                ⠀⠀⠀⠀⠀⢿⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿⠀⠀⠀
+                ⠀
+          ========= Bienvenido/a a Port scan ==========⠀    
 
 ${endColour}"
 
-sleep 5
+sleep 3
 
 
 base_ifaces=$(ifconfig | grep "flags" | grep -v "LOOPBACK" | cut -d ":" -f1)
@@ -205,7 +206,7 @@ function host_list(){ #Escaneo en búsqueda de dispositivos dentro de la red
                 echo "$hostInNetInfo" | grep -F "[$selectToScann]"
 
                 if [ $? -ne 0 ] && [ "$selectToScann" != "A" ] && [ "$selectToScann" != "0" ];then
-                    echo "opcion invalida (Saliendo al menú..)"
+                    echo "Opción inválida (Saliendo al menú..)"
                 elif [ "$selectToScann" -eq "0" ];
                 then
                     selectToScann="No selected"
@@ -224,8 +225,8 @@ function host_list(){ #Escaneo en búsqueda de dispositivos dentro de la red
                     echo -e "${grayColour} \n  ------------------------------------------------- \n${endColour}"
                     echo -e "${greenColour} \n \t  ¡Host ${yellowColour} ${hostInNetToScann} ${endColour} ${greenColour}seleccionado!\n ${endColour}"
                     echo -e "${grayColour} \n ------------------------------------------------- \n${endColour}"
-       
-                   read -rs -p"Presiona una tecla para escanear";echo
+                    echo "Presione una tecla ir al menú de escaneo"
+                    read -rs -p"";echo
                     
 
                     optionsScann $hostInNetToScann
@@ -267,7 +268,8 @@ function select_scann(){
             if [ $selectToScann == "A" ];then
                 clear
                 echo "No se puede realizar un escaneo extenso de todos los equipos"
-                read -s -p"Presiona una tecla para continuar";echo 
+                echo "Presione una tecla para continuar"
+                read -s -p"pre";echo 
             else
                 escaneo_extenso 
             fi
@@ -295,22 +297,19 @@ function escaneo_base(){
 		hostWithPorts="0"
         clear
         tput bold; echo -e "${redColour} [!] ${endColour} Escaneando puertos, espere porfavor ..."
-		myports=$(
+		
         echo $hostInNetToScann | sed 's/ /\n/g' | while read -r line; do
             echo -e "${yellowColour}\n--------- Resultados host [ $line ]--------\n${endColour}"
             cat ./portList.txt | while read -r port;
             do
-                (timeout 2 bash -c "> /dev/tcp/$line/$port")2>/dev/null && echo "${greenColour}\n \t Port $port TCP --> open${endColour}"
-            done
-            echo -e "${redColour}\n \t No hay mas puertos abiertos \n${endColour}"
+                ((timeout 1 echo "" > /dev/tcp/$line/$port)2>/dev/null && echo -e "${greenColour}\n \t Port $port TCP --> open${endColour}" | tee -a ./portLog.txt) &
+            done; wait
         done
-        )
         tput sgr0
-        
-        clear
-        echo -e "$myports" | tee ./portLog.txt
+        echo -e "${redColour}\n \t No hay mas puertos abiertos \n${endColour}"
         echo "Presiona una tecla para continuar"
         read -rs -p "pres ";echo 
+        clear
         
     fi
 }
@@ -325,7 +324,7 @@ function escaneo_extenso(){
         echo -e "${yellowColour} \n\n------------ Resultados host [ $hostInNetToScann ] ------------\n\n${endColour}" > ./portLog.txt
         for port in $(seq 1 65536);
 		do  
-            ((timeout 1 echo "" > "/dev/tcp/$hostInNetToScann/$port")2>/dev/null && echo -e "\t ${greenColour}Port $port TCP --> open \n${endColour}" | tee -a ./portLog.txt) &
+            ((timeout 1 echo "" > "/dev/tcp/$hostInNetToScann/$port")2>/dev/null && echo -e "\t \n ${greenColour}Port $port TCP --> open \n${endColour}" | tee -a ./portLog.txt) &
         done; wait
         clear
         cat ./portLog.txt
@@ -370,7 +369,8 @@ function menuifaces(){
             clear
             cat ./portLog.txt
             echo -e "${turquoiseColour}\n (ctrl + mayus + up) Para subir en el archivo \n ${endColour}"
-            read -s -p"Presiona una tecla para continuar";echo 
+            echo "Presione una tecla para continuar"
+            read -s -p"pre";echo 
             clear
             ifacesopt
             read menuOpt
