@@ -56,7 +56,8 @@ selectToScann="No selected"
 
 
 function ctrl_c(){
-    echo -e "\n \n [+] Saliendo..."
+    clear
+    echo -e "${redColour}\n \n [+] Saliendo...${endColour}"
     tput cnorm; exit 1 #recuperar cursor
 }
 
@@ -299,14 +300,18 @@ function escaneo_base(){
         tput bold; echo -e "${redColour} [!] ${endColour} Escaneando puertos, espere porfavor ..."
 		
         echo $hostInNetToScann | sed 's/ /\n/g' | while read -r line; do
-            echo -e "${yellowColour}\n--------- Resultados host [ $line ]--------\n${endColour}"
+            echo -e "${yellowColour}\n--------- Resultados host [ $line ]--------\n${endColour}" | tee ./portLog.txt
             cat ./portList.txt | while read -r port;
-            do
-                ((timeout 1 echo "" > /dev/tcp/$line/$port)2>/dev/null && echo -e "${greenColour}\n \t Port $port TCP --> open${endColour}" | tee -a ./portLog.txt) &
-            done; wait
-        done
-        tput sgr0
-        echo -e "${redColour}\n \t No hay mas puertos abiertos \n${endColour}"
+                do
+                    ((timeout 1 echo "" > /dev/tcp/$line/$port)2>/dev/null && echo -e "${greenColour}\n \t Port $port TCP --> open${endColour}" | tee -a ./portLog.txt) &
+                done; wait
+                sleep 0.001
+           done; wait
+            sleep 1
+            echo -e "\n${blueColour} Finalizando escaneo..${endColour}\n"
+            sleep 3
+            echo -e "\n ${redColour}No hay mas puertos abiertos${endColour} \n"    
+
         echo "Presiona una tecla para continuar"
         read -rs -p "pres ";echo 
         clear
@@ -319,16 +324,18 @@ function escaneo_extenso(){
     if [ ${#hostInNetToScann} -le 5 ]; then
         clear
     else
-
-        tput cnorm; echo -e "\n ${redColour} [!] Escaneando los 65536 puertos posibles, esto demorará bastante ... ${yellowColour} \n\n------------ Resultados host [ $hostInNetToScann ] ------------\n\n${endColour}"   
-        echo -e "${yellowColour} \n\n------------ Resultados host [ $hostInNetToScann ] ------------\n\n${endColour}" > ./portLog.txt
+        
+        tput cnorm; echo -e "\n ${redColour} [!] Escaneando los 65536 puertos posibles, esto demorará mucho ... ${yellowColour} \n\n------------ Resultados host [ $hostInNetToScann ] ------------\n\n${endColour}"   
+        echo -e " ${blueColour} Si el escaneo demora demasiado salir con ctrl + c ${endColour}"
+        echo -e "\t ${yellowColour} \n\n------------ Resultados host [ $hostInNetToScann ] ------------\n\n${endColour}" > ./portLog.txt
         for port in $(seq 1 65536);
 		do  
-            ((timeout 1 echo "" > "/dev/tcp/$hostInNetToScann/$port")2>/dev/null && echo -e "\t \n ${greenColour}Port $port TCP --> open \n${endColour}" | tee -a ./portLog.txt) &
+            (( timeout 1 echo "" > "/dev/tcp/$hostInNetToScann/$port")2>/dev/null && echo -e "\t \n ${greenColour}Port $port TCP --> open \n${endColour}" | tee -a ./portLog.txt) &
+            sleep 0.001
         done; wait
-        clear
-        cat ./portLog.txt
-       
+        sleep 1
+        echo -e "\n${blueColour} Finalizando escaneo..${endColour}\n"
+        sleep 3
         echo -e "\n ${redColour}No hay mas puertos abiertos${endColour} \n"
     
         echo "Presiona una tecla para continuar"
